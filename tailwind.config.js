@@ -4,7 +4,17 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderColor: theme => ({
+        "signature-color": "#fac25b",
+      }),
+      backgroundColor: theme => ({
+        "signature-color": "#fac25b",
+      }),
+      textColor: theme => ({
+        "signature-color": "#fac25b",
+      }),
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 }

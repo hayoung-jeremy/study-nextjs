@@ -20,7 +20,7 @@ const Enter = () => {
               className={cls(
                 "font-medium text-base px-4 py-3 rounded-t-lg",
                 method === "email"
-                  ? "border-b-2 border-b-[#fac25b] text-[#fac25b] "
+                  ? "border-b-2 border-b-signature-color text-signature-color "
                   : "text-gray-500 border-b-2 border-b-[#666]"
               )}
             >
@@ -31,7 +31,7 @@ const Enter = () => {
               className={cls(
                 "font-medium text-base px-4 py-3 rounded-t-lg",
                 method === "phone"
-                  ? "border-b-2 border-b-[#fac25b] text-[#fac25b] "
+                  ? "border-b-2 border-b-signature-color text-signature-color "
                   : "text-gray-500 border-b-2 border-b-[#666]"
               )}
             >
@@ -41,13 +41,14 @@ const Enter = () => {
         </div>
         {/* form */}
         <form className="flex flex-col mt-8">
-          <label className="text-sm font-medium text-[#aaa]">
+          <label htmlFor="input" className="text-sm font-medium text-[#aaa]">
             {method === "email" ? "Email address" : null}
             {method === "phone" ? "Phone number" : null}
           </label>
           <div className="mt-1">
             {method === "email" ? (
               <input
+                id="input"
                 type="email"
                 required
                 className={cls(
@@ -62,6 +63,7 @@ const Enter = () => {
                   +82
                 </span>
                 <input
+                  id="input"
                   type="number"
                   required
                   className={cls(
@@ -72,7 +74,7 @@ const Enter = () => {
               </div>
             ) : null}
           </div>
-          <button className="py-3 border border-[#fac25b] mt-3 rounded text-[#fac25b] font-medium hover:bg-[#fac25b11] transition-all">
+          <button className="py-3 border border-signature-color mt-3 rounded text-signature-color font-medium hover:bg-[#fac25b11] transition-all">
             {method === "email" ? "Get login link" : null}
             {method === "phone" ? "Get one-time password" : null}
           </button>
