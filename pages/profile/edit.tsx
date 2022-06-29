@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { Button } from "../../components/common"
+import { Button, Input } from "../../components/common"
 import { cls } from "../../src/utils/className"
 
 const EditProfile: NextPage = () => {
@@ -17,41 +17,10 @@ const EditProfile: NextPage = () => {
       </div>
 
       {/* email */}
-      <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="text-sm font-medium text-[#aaa]">
-          Email address
-        </label>
-        <input
-          id="email"
-          type="email"
-          required
-          className={cls(
-            "appearance-none w-full px-3 py-2 border-[#555] rounded-[4px] bg-[#333]",
-            "focus:ring-[#fac25b66] focus:border-[#fac25b66] focus:outline-none"
-          )}
-        />
-      </div>
+      <Input label="Email address" kind="text" required name="email" />
 
       {/* phone */}
-      <div className="flex flex-col gap-1">
-        <label htmlFor="phone" className="text-sm font-medium text-[#aaa]">
-          Phone number
-        </label>
-        <div className="flex items-center rounded">
-          <span className="flex items-center justify-center px-3 py-2 rounded-l border border-[#555] border-r-0 bg-[#333] text-[#aaa] select-none">
-            +82
-          </span>
-          <input
-            id="phone"
-            type="number"
-            required
-            className={cls(
-              "appearance-none w-full px-3 py-2 border-[#555] rounded-r-[4px] bg-[#333]",
-              "focus:ring-[#fac25b66] focus:border-[#fac25b66] focus:outline-none"
-            )}
-          />
-        </div>
-      </div>
+      <Input label="Phone number" kind="phone" required name="email" />
 
       {/* update button */}
       <Button text="Update profile" />

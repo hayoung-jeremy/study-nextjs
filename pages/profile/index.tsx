@@ -1,4 +1,6 @@
 import type { NextPage } from "next"
+import Link from "next/link"
+
 import { Layout } from "../../components/common"
 
 const Profile: NextPage = () => {
@@ -10,7 +12,23 @@ const Profile: NextPage = () => {
           <div className="w-16 h-16 bg-[#444] rounded-full" />
           <div className="flex flex-col">
             <span className="font-medium">Steve Jebs</span>
-            <span className="text-sm text-[#ccc]">Edit profile &rarr;</span>
+            <Link href="/profile/edit">
+              <a className="flex items-center text-sm text-[#ccc]">
+                <span>Edit profile</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+            </Link>
           </div>
         </header>
 

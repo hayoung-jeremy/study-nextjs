@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button } from "../components/common"
+import { Button, Input } from "../components/common"
 import { cls } from "../src/utils/className"
 
 const Enter = () => {
@@ -41,39 +41,14 @@ const Enter = () => {
           </div>
         </div>
         {/* form */}
-        <form className="flex flex-col mt-8">
-          <label htmlFor="input" className="text-sm font-medium text-[#aaa]">
-            {method === "email" ? "Email address" : null}
-            {method === "phone" ? "Phone number" : null}
-          </label>
+        <form className="flex flex-col mt-8 gap-2">
           <div className="mt-1">
-            {method === "email" ? (
-              <input
-                id="input"
-                type="email"
-                required
-                className={cls(
-                  "appearance-none w-full px-3 py-2 border-[#555] rounded-[4px] bg-[#333]",
-                  "focus:ring-[#fac25b66] focus:border-[#fac25b66] focus:outline-none"
-                )}
-              />
-            ) : null}
-            {method === "phone" ? (
-              <div className="flex items-center rounded">
-                <span className="flex items-center justify-center px-3 py-2 rounded-l border border-[#555] border-r-0 bg-[#333] text-[#aaa] select-none">
-                  +82
-                </span>
-                <input
-                  id="input"
-                  type="number"
-                  required
-                  className={cls(
-                    "appearance-none w-full px-3 py-2 border-[#555] rounded-r-[4px] bg-[#333]",
-                    "focus:ring-[#fac25b66] focus:border-[#fac25b66] focus:outline-none"
-                  )}
-                />
-              </div>
-            ) : null}
+            {method === "email" && (
+              <Input label="Email address" kind="text" required name="email" />
+            )}
+            {method === "phone" && (
+              <Input label="Phone number" kind="phone" required name="email" />
+            )}
           </div>
           <Button
             type="outlined"
