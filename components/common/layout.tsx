@@ -50,7 +50,12 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
       {hasTabBar && (
         <nav className="bg-[#292929] max-w-lg w-full h-16 fixed border-t border-t-[#3a3a3a] bottom-0 left-[50%] translate-x-[-50%] flex items-center justify-around shadow-lg gap-2">
           <Link href="/">
-            <a className="flex flex-col items-center min-w-[48px] w-fit">
+            <a
+              className={cls(
+                "flex flex-col items-center min-w-[48px] w-fit",
+                router.pathname === "/" ? "text-signature-color" : ""
+              )}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -69,7 +74,12 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
             </a>
           </Link>
           <Link href="/community">
-            <a className="flex flex-col items-center min-w-[48px] w-fit">
+            <a
+              className={cls(
+                "flex flex-col items-center min-w-[48px] w-fit",
+                router.pathname === "/community" ? "text-signature-color" : ""
+              )}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -88,7 +98,12 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
             </a>
           </Link>
           <Link href="/chats">
-            <a className="flex flex-col items-center min-w-[48px] w-fit">
+            <a
+              className={cls(
+                "flex flex-col items-center min-w-[48px] w-fit",
+                router.pathname === "/chats" ? "text-signature-color" : ""
+              )}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -107,7 +122,12 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
             </a>
           </Link>
           <Link href="/streams">
-            <a className="flex flex-col items-center min-w-[48px] w-fit">
+            <a
+              className={cls(
+                "flex flex-col items-center min-w-[48px] w-fit",
+                router.pathname === "/streams" ? "text-signature-color" : ""
+              )}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -126,7 +146,12 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
             </a>
           </Link>
           <Link href="/profile">
-            <a className="flex flex-col items-center min-w-[48px] w-fit">
+            <a
+              className={cls(
+                "flex flex-col items-center min-w-[48px] w-fit",
+                router.pathname === "/profile" ? "text-signature-color" : ""
+              )}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
