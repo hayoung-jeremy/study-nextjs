@@ -1,4 +1,5 @@
 import type { NextPage } from "next"
+import { Button } from "../../components/common"
 import { cls } from "../../src/utils/className"
 
 const EditProfile: NextPage = () => {
@@ -52,9 +53,8 @@ const EditProfile: NextPage = () => {
         </div>
       </div>
 
-      <button className="flex-1 py-3 bg-[#ff9634] rounded-lg outline-none text-white font-medium hover:bg-[#f38f32] transition-all w-full">
-        Update profile
-      </button>
+      {/* update button */}
+      <Button text="Update profile" />
     </section>
   )
 }

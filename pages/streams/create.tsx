@@ -1,4 +1,5 @@
 import type { NextPage } from "next"
+import { Button } from "../../components/common"
 import { cls } from "../../src/utils/className"
 
 const Create: NextPage = () => {
@@ -64,9 +65,7 @@ const Create: NextPage = () => {
       </div>
 
       {/* upload button */}
-      <button className="flex-1 py-3 bg-[#ff9634] rounded-lg focus:outline-none text-white font-medium hover:bg-[#f38f32] transition-all w-full">
-        Go Live
-      </button>
+      <Button text="Go Live" />
     </section>
   )
 }

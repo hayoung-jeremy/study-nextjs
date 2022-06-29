@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Button } from "../components/common"
 import { cls } from "../src/utils/className"
 
 const Enter = () => {
@@ -74,10 +75,16 @@ const Enter = () => {
               </div>
             ) : null}
           </div>
-          <button className="py-3 border border-signature-color mt-3 rounded text-signature-color font-medium hover:bg-[#fac25b11] transition-all">
-            {method === "email" ? "Get login link" : null}
-            {method === "phone" ? "Get one-time password" : null}
-          </button>
+          <Button
+            type="outlined"
+            text={
+              method === "email"
+                ? "Get login link"
+                : method === "phone"
+                ? "Get one-time password"
+                : ""
+            }
+          />
         </form>
         {/* github & twitter */}
         <div>
