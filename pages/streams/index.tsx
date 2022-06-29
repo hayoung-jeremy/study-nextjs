@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 
-const Live: NextPage = () => {
+const Stream: NextPage = () => {
   return (
     <section className="py-10 px-4 text-[#eee]">
       <ul className="flex flex-col gap-5">
@@ -33,4 +33,4 @@ const Live: NextPage = () => {
   )
 }
 
-export default Live
+export default Stream
