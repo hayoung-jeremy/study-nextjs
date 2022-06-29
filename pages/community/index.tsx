@@ -1,5 +1,6 @@
 import type { NextPage } from "next"
-import Layout from "../../components/layout"
+import { Layout } from "../../components/common"
+import FloatingButton from "../../components/common/floatingButton"
 
 const Community: NextPage = () => {
   return (
@@ -66,22 +67,7 @@ const Community: NextPage = () => {
             </article>
           )
         })}
-        <button className="fixed bottom-12 right-5 w-12 h-12 rounded-full bg-[#ffb833] hover:bg-[#d69722] transition-all flex items-center justify-center shadow-2xl">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-            ></path>
-          </svg>
-        </button>
+        <FloatingButton buttonType="write" />
       </section>
     </Layout>
   )

@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import Layout from "../../components/layout"
+import { Layout } from "../../components/common"
 
 const ItemDetail: NextPage = () => {
   return (

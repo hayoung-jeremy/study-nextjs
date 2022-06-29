@@ -1,16 +1,8 @@
-// next
+import { useState } from "react"
 import type { NextPage } from "next"
 
-// react
-import { useState } from "react"
-
-// mui
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
-import FavoriteIcon from "@mui/icons-material/Favorite"
-import StarBorderIcon from "@mui/icons-material/StarBorder"
-import StarIcon from "@mui/icons-material/Star"
-import Layout from "../components/layout"
+import { Layout } from "../components/common"
+import FloatingButton from "../components/common/floatingButton"
 
 const Home: NextPage = () => {
   const [isLiked, setIsLiked] = useState(false)
@@ -72,23 +64,7 @@ const Home: NextPage = () => {
               </div>
             </article>
           ))}
-          <button className="fixed bottom-20 right-5 w-12 h-12 rounded-full bg-[#ffb833] hover:bg-[#d69722] transition-all flex items-center justify-center shadow-2xl">
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </button>
+          <FloatingButton buttonType="add" />
         </main>
       </section>
     </Layout>
