@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 
-const bought: NextPage = () => {
+const Bought: NextPage = () => {
   return (
     <section className="bg-[#222] text-[#eee]">
       <main className=" flex flex-col gap-[1px]">
@@ -61,4 +61,4 @@ const bought: NextPage = () => {
   )
 }
 
-export default bought
+export default Bought

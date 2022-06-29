@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 
-const liked: NextPage = () => {
+const Liked: NextPage = () => {
   return (
     <section className="bg-[#222] text-[#eee]">
       <main className=" flex flex-col gap-[1px]">
@@ -61,4 +61,4 @@ const liked: NextPage = () => {
   )
 }
 
-export default liked
+export default Liked

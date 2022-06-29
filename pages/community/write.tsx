@@ -2,7 +2,7 @@ import type { NextPage } from "next"
 
 import { cls } from "../../src/utils/className"
 
-const write: NextPage = () => {
+const Write: NextPage = () => {
   return (
     <form className="px-5 py-10 text-[#eee]">
       <textarea
@@ -20,4 +20,4 @@ const write: NextPage = () => {
   )
 }
 
-export default write
+export default Write
