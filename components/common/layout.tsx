@@ -49,7 +49,7 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
       {/* tab bar */}
       {hasTabBar && (
         <nav className="bg-[#292929] max-w-lg w-full h-16 fixed border-t border-t-[#3a3a3a] bottom-0 left-[50%] translate-x-[-50%] flex items-center justify-around shadow-lg gap-2">
-          <Link href={"/"}>
+          <Link href="/">
             <a className="flex flex-col items-center min-w-[48px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
               <span className="text-[10px] font-medium mt-[1px]">홈</span>
             </a>
           </Link>
-          <Link href={"/community"}>
+          <Link href="/community">
             <a className="flex flex-col items-center min-w-[48px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
               <span className="text-[10px] font-medium mt-[1px]">동네생활</span>
             </a>
           </Link>
-          <Link href={"/chats"}>
+          <Link href="/chats">
             <a className="flex flex-col items-center min-w-[48px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
               <span className="text-[10px] font-medium mt-[1px]">채팅</span>
             </a>
           </Link>
-          <Link href={"/streams"}>
+          <Link href="/streams">
             <a className="flex flex-col items-center min-w-[48px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ const Layout = ({ title, canGoBack, hasTabBar, children }: Props) => {
               <span className="text-[10px] font-medium mt-[1px]">라이브</span>
             </a>
           </Link>
-          <Link href={"/profile"}>
+          <Link href="/profile">
             <a className="flex flex-col items-center min-w-[48px] w-fit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

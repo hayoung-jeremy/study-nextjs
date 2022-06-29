@@ -1,6 +1,5 @@
 import type { NextPage } from "next"
-import { Layout } from "../../components/common"
-import FloatingButton from "../../components/common/floatingButton"
+import { FloatingButton, Layout } from "../../components/common"
 
 const Stream: NextPage = () => {
   return (
@@ -16,7 +15,7 @@ const Stream: NextPage = () => {
             </li>
           ))}
         </ul>
-        <FloatingButton buttonType="live" />
+        <FloatingButton buttonType="live" href="/streams/create" />
       </section>
     </Layout>
   )

@@ -1,4 +1,4 @@
-import Layout from "./layout"
+import Layout from "./Layout"
+import FloatingButton from "./FloatingButton"
 
-
-export { Layout }
+export { Layout, FloatingButton }

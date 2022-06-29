@@ -1,9 +1,8 @@
 import { useState } from "react"
 import type { NextPage } from "next"
 
-import { Layout } from "../components/common"
-import FloatingButton from "../components/common/floatingButton"
 import { ProductPreview } from "../components/home"
+import { FloatingButton, Layout } from "../components/common"
 
 const Home: NextPage = () => {
   const [isLiked, setIsLiked] = useState(false)
@@ -16,14 +15,15 @@ const Home: NextPage = () => {
           {[...Array(10)].map((_, i) => (
             <ProductPreview
               key={i}
-              productName="iphone 14"
-              productOption="Black"
-              productPrice={80 + i}
-              countComment={i + 1}
-              countLiked={i}
+              id={i}
+              title="iphone 14"
+              option="Black"
+              price={80 + i}
+              liked={i + 1}
+              comment={i}
             />
           ))}
-          <FloatingButton buttonType="add" />
+          <FloatingButton buttonType="add" href="/items/upload" />
         </main>
       </section>
     </Layout>

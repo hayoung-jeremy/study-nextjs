@@ -1,6 +1,5 @@
 import type { NextPage } from "next"
-import { Layout } from "../../components/common"
-import FloatingButton from "../../components/common/floatingButton"
+import { FloatingButton, Layout } from "../../components/common"
 
 const Community: NextPage = () => {
   return (
@@ -67,7 +66,7 @@ const Community: NextPage = () => {
             </article>
           )
         })}
-        <FloatingButton buttonType="write" />
+        <FloatingButton buttonType="write" href="/community/write" />
       </section>
     </Layout>
   )
