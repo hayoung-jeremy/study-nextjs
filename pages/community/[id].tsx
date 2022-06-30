@@ -1,15 +1,16 @@
 import type { NextPage } from "next"
+
 import { Button, Layout, TextArea } from "../../components/common"
 import { cls } from "../../src/utils/className"
 
 const CommunityPostDetail: NextPage = () => {
   return (
     <Layout canGoBack>
-      <section className="text-[#eee]">
+      <section className="text-[#eee] pt-5">
         {/* pill */}
-        <h2 className="ml-5 my-3 text-xs bg-[#444] py-0.5 px-2.5 rounded-full text-white font-medium w-fit">
+        <span className="ml-5 my-3 text-xs bg-[#444] py-0.5 px-2.5 rounded-full text-white font-medium w-fit">
           동네질문
-        </h2>
+        </span>
 
         {/* user profile */}
         <div className="px-5 flex items-center gap-3 py-4 border-b border-b-[#444] cursor-pointer mb-5">

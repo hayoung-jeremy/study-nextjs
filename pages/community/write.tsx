@@ -1,12 +1,17 @@
 import type { NextPage } from "next"
-import { Button, TextArea } from "../../components/common"
+
+import { Button, Layout, TextArea } from "../../components/common"
 
 const Write: NextPage = () => {
   return (
-    <form className="px-5 py-10 text-[#eee]">
-      <TextArea placeholder="Ask a question!" />
-      <Button text="Submmit" />
-    </form>
+    <Layout canGoBack title="Write Post">
+      <a>
+        <form className="px-5 py-10 text-[#eee] flex flex-col gap-3">
+          <TextArea placeholder="Ask a question!" />
+          <Button text="Submmit" />
+        </form>
+      </a>
+    </Layout>
   )
 }
 
