@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 
 import { Button, Input } from "../components/common"
+import useMutation from "../libs/client/useMutation"
 import { cls } from "../libs/client/utils"
 
 interface EnterForm {
@@ -12,6 +13,8 @@ interface EnterForm {
 const Enter = () => {
   const { register, handleSubmit, reset } = useForm<EnterForm>()
   const [submitting, setSubmitting] = useState(false)
+
+  const [enter, { loading, data, error }] = useMutation("/api/users/enter")
 
   const [method, setMethod] = useState<"email" | "phone">("email")
 
@@ -24,16 +27,12 @@ const Enter = () => {
     reset()
   }
 
-  const onValid = (data: EnterForm) => {
-    setSubmitting(true)
-    fetch("/api/users/enter", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => setSubmitting(false))
+  const onValid = (validFormData: EnterForm) => {
+    enter(validFormData)
   }
+  console.log("data : ", data)
+  console.log("loading : ", loading)
+  console.log("error : ", error)
   const onInValid = () => {}
 
   return (
