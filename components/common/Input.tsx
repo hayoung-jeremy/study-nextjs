@@ -1,4 +1,5 @@
 import React from "react"
+import type { UseFormRegisterReturn } from "react-hook-form"
 
 import { cls } from "../../libs/utils"
 
@@ -6,10 +7,11 @@ interface Props {
   label: string
   name: string
   kind?: "text" | "phone" | "price"
-  [key: string]: any
+  type?: string
+  register?: UseFormRegisterReturn
 }
 
-const Input = ({ label, name, kind = "text", ...rest }: Props) => {
+const Input = ({ label, name, kind = "text", type, register }: Props) => {
   return (
     <div className="text-[#eee]">
       <label
@@ -21,7 +23,8 @@ const Input = ({ label, name, kind = "text", ...rest }: Props) => {
       {kind === "text" && (
         <input
           id={name}
-          {...rest}
+          type={type}
+          {...register}
           className={cls(
             "block appearance-none w-full px-3 py-2 border border-[#555] rounded-[4px] bg-[#333]",
             "focus:ring-[#fac25b66] focus:border-[#fac25b66] focus:outline-none"
@@ -35,7 +38,8 @@ const Input = ({ label, name, kind = "text", ...rest }: Props) => {
           </span>
           <input
             id={name}
-            {...rest}
+            type={type}
+            {...register}
             className={cls(
               "block appearance-none w-full px-3 py-2 border border-[#555] rounded-r-[4px] bg-[#333]",
               "focus:ring-[#fac25b66] focus:border-[#fac25b66] focus:outline-none"
@@ -50,7 +54,8 @@ const Input = ({ label, name, kind = "text", ...rest }: Props) => {
           </div>
           <input
             id={name}
-            {...rest}
+            type={type}
+            {...register}
             placeholder="0.00"
             className={cls(
               "appearance-none w-full pl-7 pr-14 py-2 border border-[#555] rounded-md bg-[#333]",

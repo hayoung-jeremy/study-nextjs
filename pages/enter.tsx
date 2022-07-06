@@ -1,11 +1,41 @@
 import React, { useState } from "react"
+import { useForm } from "react-hook-form"
+
 import { Button, Input } from "../components/common"
 import { cls } from "../src/utils/className"
 
+interface EnterForm {
+  email?: string
+  phone?: string
+}
+
 const Enter = () => {
+  const { register, handleSubmit, reset } = useForm<EnterForm>()
+  const [submitting, setSubmitting] = useState(false)
+
   const [method, setMethod] = useState<"email" | "phone">("email")
-  const onEmailClick = () => setMethod("email")
-  const onPhoneClick = () => setMethod("phone")
+
+  const onEmailClick = () => {
+    setMethod("email")
+    reset()
+  }
+  const onPhoneClick = () => {
+    setMethod("phone")
+    reset()
+  }
+
+  const onValid = (data: EnterForm) => {
+    setSubmitting(true)
+    fetch("/api/users/enter", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => setSubmitting(false))
+  }
+  const onInValid = () => {}
+
   return (
     <section className="mt-16 px-5 bg-[#222]">
       <h3 className="text-3xl text-center font-bold text-[#eee]">
@@ -41,25 +71,42 @@ const Enter = () => {
           </div>
         </div>
         {/* form */}
-        <form className="flex flex-col mt-8 gap-2">
+        <form
+          onSubmit={handleSubmit(onValid)}
+          className="flex flex-col mt-8 gap-2"
+        >
           <div className="mt-1">
             {method === "email" && (
-              <Input label="Email address" kind="text" required name="email" />
+              <Input
+                register={register("email")}
+                label="Email address"
+                kind="text"
+                name="email"
+                type="email"
+              />
             )}
             {method === "phone" && (
-              <Input label="Phone number" kind="phone" required name="email" />
+              <Input
+                register={register("phone")}
+                label="Phone number"
+                kind="phone"
+                name="email"
+                type="number"
+              />
             )}
           </div>
-          <Button
-            type="outlined"
-            text={
-              method === "email"
-                ? "Get login link"
-                : method === "phone"
-                ? "Get one-time password"
-                : ""
-            }
-          />
+          {method === "email" && (
+            <Button
+              type="outlined"
+              text={submitting ? "Loading ..." : "Get login link"}
+            />
+          )}
+          {method === "phone" && (
+            <Button
+              type="outlined"
+              text={submitting ? "Loading ..." : "Get one-time password"}
+            />
+          )}
         </form>
         {/* github & twitter */}
         <div>
