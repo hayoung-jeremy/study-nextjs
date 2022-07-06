@@ -1,6 +1,5 @@
 import type { NextPage } from "next"
 import { Button, Input, Layout } from "../../components/common"
-import { cls } from "../../src/utils/className"
 
 const EditProfile: NextPage = () => {
   return (
@@ -23,10 +22,10 @@ const EditProfile: NextPage = () => {
         </div>
 
         {/* email */}
-        <Input label="Email address" kind="text" required name="email" />
+        <Input label="Email address" kind="text" name="email" />
 
         {/* phone */}
-        <Input label="Phone number" kind="phone" required name="email" />
+        <Input label="Phone number" kind="phone" name="email" />
 
         {/* update button */}
         <Button text="Update profile" />

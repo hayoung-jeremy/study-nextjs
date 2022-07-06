@@ -1,6 +1,5 @@
 import type { NextPage } from "next"
 import { Button, Input, Layout, TextArea } from "../../components/common"
-import { cls } from "../../src/utils/className"
 
 const Create: NextPage = () => {
   return (

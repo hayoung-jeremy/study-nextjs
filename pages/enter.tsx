@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 
 import { Button, Input } from "../components/common"
-import { cls } from "../src/utils/className"
+import { cls } from "../libs/client/utils"
 
 interface EnterForm {
   email?: string
