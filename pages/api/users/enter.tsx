@@ -1,22 +1,29 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import withHandler from "@libs/server/withHandler"
 import prismaClient from "@libs/server/client"
+import { withHandler, ResponseType } from "@libs/server/withHandler"
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseType>
+) => {
   const { email, phone } = req.body
-  const payload = phone ? { phone: +phone } : email ? { email } : null
+
+  const user = phone ? { phone: +phone } : email ? { email } : null
+  const payload = Math.floor(10000 + Math.random() * 900000) + ""
+
+  if (!user) return res.status(400).json({ ok: false })
 
   const token = await prismaClient.token.create({
     data: {
-      payload: "1234",
+      payload,
       user: {
         connectOrCreate: {
           where: {
-            ...payload,
+            ...user,
           },
           create: {
             name: "Anonymous",
-            ...payload,
+            ...user,
           },
         },
       },
@@ -65,7 +72,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //   // console.log("user : ", user)
   // }
   // console.log(req.body)
-  return res.status(200).end()
+  return res.json({
+    ok: true,
+  })
 }
 
 export default withHandler("POST", handler)

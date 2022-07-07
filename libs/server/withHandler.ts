@@ -2,7 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 type methods = "GET" | "POST" | "DELETE"
 
-const withHandler = (
+export interface ResponseType {
+  ok: boolean
+  [key: string]: any
+}
+
+export const withHandler = (
   method: methods,
   fn: (req: NextApiRequest, res: NextApiResponse) => void
 ) => {
@@ -18,5 +23,3 @@ const withHandler = (
     }
   }
 }
-
-export default withHandler
