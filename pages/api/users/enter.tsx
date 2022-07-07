@@ -43,22 +43,22 @@ const handler = async (
   })
 
   if (phone) {
-    const message = await twilioClient.messages.create({
-      messagingServiceSid: process.env.TWILIO_MESSAGE_SID,
-      to: process.env.TEST_PHONE_NUM!,
-      body: `Your login token is ${payload}`,
-    })
-    console.log("message : ", message)
-    console.log("token : ", token)
+    // const message = await twilioClient.messages.create({
+    //   messagingServiceSid: process.env.TWILIO_MESSAGE_SID,
+    //   to: process.env.TEST_PHONE_NUM!,
+    //   body: `Your login token is ${payload}`,
+    // })
+    // console.log("message : ", message)
+    // console.log("token : ", token)
   } else if (email) {
-    const emailMessage = await emailTransporter.sendMail({
-      from: "hyk@altava.com",
-      to: email,
-      subject: "Carrot Market Verification Email",
-      text: `Your token number is ${payload}`,
-      html: `<strong>Your token number is ${payload}</strong>`,
-    })
-    console.log("emailMessage : ", emailMessage)
+    // const emailMessage = await emailTransporter.sendMail({
+    //   from: "hyk@altava.com",
+    //   to: email,
+    //   subject: "Carrot Market Verification Email",
+    //   text: `Your token number is ${payload}`,
+    //   html: `<strong>Your token number is ${payload}</strong>`,
+    // })
+    // console.log("emailMessage : ", emailMessage)
   }
 
   // if (email) {

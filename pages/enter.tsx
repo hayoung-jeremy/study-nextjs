@@ -10,11 +10,26 @@ interface EnterForm {
   phone?: string
 }
 
+interface TokenForm {
+  token: string
+}
+
+interface MutationResult {
+  ok: boolean
+}
+
 const Enter = () => {
   const { register, handleSubmit, reset } = useForm<EnterForm>()
   const [submitting, setSubmitting] = useState(false)
 
-  const [enter, { loading, data, error }] = useMutation("/api/users/enter")
+  const { register: tokenRegister, handleSubmit: tokenHandleSubmit } =
+    useForm<TokenForm>()
+
+  const [enter, { loading, data, error }] =
+    useMutation<MutationResult>("/api/users/enter")
+
+  const [confirm, { loading: tokenLoading, data: tokenData }] =
+    useMutation<MutationResult>("/api/users/confirm")
 
   const [method, setMethod] = useState<"email" | "phone">("email")
 
@@ -30,6 +45,11 @@ const Enter = () => {
   const onValid = (validFormData: EnterForm) => {
     enter(validFormData)
   }
+  const onTokenValid = (validFormData: TokenForm) => {
+    if (tokenLoading) return
+    console.log("validFormData : ", validFormData)
+    confirm(validFormData)
+  }
   console.log("data : ", data)
   console.log("loading : ", loading)
   console.log("error : ", error)
@@ -41,72 +61,98 @@ const Enter = () => {
         Welcome to Carrot
       </h3>
       <main className="mt-16">
-        {/* tab menu */}
-        <div className="flex flex-col items-center ">
-          <h5 className="text-gray-500 font-medium text-sm">Enter using:</h5>
-          <div className="w-full grid grid-cols-2 mt-8">
-            <button
-              onClick={onEmailClick}
-              className={cls(
-                "font-medium text-base px-4 py-3 rounded-t-lg",
-                method === "email"
-                  ? "border-b-2 border-b-signature-color text-signature-color "
-                  : "text-gray-500 border-b-2 border-b-[#666]"
-              )}
-            >
-              Email
-            </button>
-            <button
-              onClick={onPhoneClick}
-              className={cls(
-                "font-medium text-base px-4 py-3 rounded-t-lg",
-                method === "phone"
-                  ? "border-b-2 border-b-signature-color text-signature-color "
-                  : "text-gray-500 border-b-2 border-b-[#666]"
-              )}
-            >
-              Phone
-            </button>
-          </div>
-        </div>
-        {/* form */}
-        <form
-          onSubmit={handleSubmit(onValid)}
-          className="flex flex-col mt-8 gap-2"
-        >
-          <div className="mt-1">
-            {method === "email" && (
+        {data?.ok ? (
+          // token
+          <form
+            onSubmit={tokenHandleSubmit(onTokenValid)}
+            className="flex flex-col mt-8 gap-2"
+          >
+            <div className="mt-1">
               <Input
-                register={register("email")}
-                label="Email address"
+                register={tokenRegister("token", { required: true })}
+                label="Confirmation Token"
                 kind="text"
-                name="email"
-                type="email"
-              />
-            )}
-            {method === "phone" && (
-              <Input
-                register={register("phone")}
-                label="Phone number"
-                kind="phone"
-                name="email"
+                name="token"
                 type="number"
               />
-            )}
-          </div>
-          {method === "email" && (
+            </div>
             <Button
               type="outlined"
-              text={submitting ? "Loading ..." : "Get login link"}
+              text={tokenLoading ? "Loading ..." : "Confirm Token"}
             />
-          )}
-          {method === "phone" && (
-            <Button
-              type="outlined"
-              text={submitting ? "Loading ..." : "Get one-time password"}
-            />
-          )}
-        </form>
+          </form>
+        ) : (
+          <>
+            {/* tab menu */}
+            <div className="flex flex-col items-center ">
+              <h5 className="text-gray-500 font-medium text-sm">
+                Enter using:
+              </h5>
+              <div className="w-full grid grid-cols-2 mt-8">
+                <button
+                  onClick={onEmailClick}
+                  className={cls(
+                    "font-medium text-base px-4 py-3 rounded-t-lg",
+                    method === "email"
+                      ? "border-b-2 border-b-signature-color text-signature-color "
+                      : "text-gray-500 border-b-2 border-b-[#666]"
+                  )}
+                >
+                  Email
+                </button>
+                <button
+                  onClick={onPhoneClick}
+                  className={cls(
+                    "font-medium text-base px-4 py-3 rounded-t-lg",
+                    method === "phone"
+                      ? "border-b-2 border-b-signature-color text-signature-color "
+                      : "text-gray-500 border-b-2 border-b-[#666]"
+                  )}
+                >
+                  Phone
+                </button>
+              </div>
+            </div>
+            {/* form */}
+            <form
+              onSubmit={handleSubmit(onValid)}
+              className="flex flex-col mt-8 gap-2"
+            >
+              <div className="mt-1">
+                {method === "email" && (
+                  <Input
+                    register={register("email")}
+                    label="Email address"
+                    kind="text"
+                    name="email"
+                    type="email"
+                  />
+                )}
+                {method === "phone" && (
+                  <Input
+                    register={register("phone")}
+                    label="Phone number"
+                    kind="phone"
+                    name="email"
+                    type="number"
+                  />
+                )}
+              </div>
+              {method === "email" && (
+                <Button
+                  type="outlined"
+                  text={loading ? "Loading ..." : "Get login link"}
+                />
+              )}
+              {method === "phone" && (
+                <Button
+                  type="outlined"
+                  text={loading ? "Loading ..." : "Get one-time password"}
+                />
+              )}
+            </form>
+          </>
+        )}
         {/* github & twitter */}
         <div>
           <div>
