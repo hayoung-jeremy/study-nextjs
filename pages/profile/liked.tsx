@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { Layout, ProductPreview } from "../../components/common"
+import { Layout, ProductPreview } from "@components/common"
 
 const Liked: NextPage = () => {
   return (

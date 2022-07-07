@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 
-import { Button, Layout, TextArea } from "../../components/common"
+import { Button, Layout, TextArea } from "@components/common"
 
 const Write: NextPage = () => {
   return (

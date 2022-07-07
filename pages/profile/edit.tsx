@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { Button, Input, Layout } from "../../components/common"
+import { Button, Input, Layout } from "@components/common"
 
 const EditProfile: NextPage = () => {
   return (

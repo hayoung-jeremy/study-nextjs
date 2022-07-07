@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 
-import { Button, Layout } from "../../components/common"
+import { Button, Layout } from "@components/common"
 
 const ItemDetail: NextPage = () => {
   return (

@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-import { cls } from "../../libs/client/utils"
+import { cls } from "@libs/client/utils"
 
 interface Props {
   title?: string

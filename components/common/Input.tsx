@@ -1,7 +1,7 @@
 import React from "react"
 import type { UseFormRegisterReturn } from "react-hook-form"
 
-import { cls } from "../../libs/client/utils"
+import { cls } from "@libs/client/utils"
 
 interface Props {
   label: string

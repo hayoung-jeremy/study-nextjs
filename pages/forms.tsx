@@ -1,6 +1,6 @@
 import React from "react"
 import { FieldErrors, useForm } from "react-hook-form"
-import { cls } from "../libs/client/utils"
+import { cls } from "@libs/client/utils"
 
 interface LoginForm {
   username: string

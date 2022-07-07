@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
 import Link from "next/link"
 
-import { FloatingButton, Layout } from "../../components/common"
+import { FloatingButton, Layout } from "@components/common"
 
 const Stream: NextPage = () => {
   return (

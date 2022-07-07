@@ -1,7 +1,6 @@
 import type { NextPage } from "next"
 
-import { Button, Layout, TextArea } from "../../components/common"
-import { cls } from "../../src/utils/className"
+import { Button, Layout, TextArea } from "@components/common"
 
 const CommunityPostDetail: NextPage = () => {
   return (

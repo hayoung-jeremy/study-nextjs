@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
 
-import { Layout, Message } from "../../components/common"
-import { cls } from "../../libs/client/utils"
+import { Layout, Message } from "@components/common"
+import { cls } from "@libs/client/utils"
 
 const ChatDetail: NextPage = () => {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type { NextPage } from "next"
 
-import { FloatingButton, Layout, ProductPreview } from "../components/common"
+import { FloatingButton, Layout, ProductPreview } from "@components/common"
 
 const Home: NextPage = () => {
   const [isLiked, setIsLiked] = useState(false)
