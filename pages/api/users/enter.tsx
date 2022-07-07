@@ -5,21 +5,25 @@ import prismaClient from "@libs/server/client"
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, phone } = req.body
   const payload = phone ? { phone: +phone } : email ? { email } : null
-  const user = await prismaClient.user.upsert({
-    where: {
-      // ... the filter for the User we want to update
-      ...payload,
-    },
-    create: {
-      // ... data to create a User
-      name: "Anonymous",
-      ...payload,
-    },
-    update: {
-      // ... in case it already exists, update
+
+  const token = await prismaClient.token.create({
+    data: {
+      payload: "1234",
+      user: {
+        connectOrCreate: {
+          where: {
+            ...payload,
+          },
+          create: {
+            name: "Anonymous",
+            ...payload,
+          },
+        },
+      },
     },
   })
-  console.log(user)
+
+  console.log("token : ", token)
 
   // if (email) {
   //   user = await prismaClient.user.findUnique({
