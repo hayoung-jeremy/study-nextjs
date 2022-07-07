@@ -1,6 +1,18 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import twilio from "twilio"
+import nodemailer from "nodemailer"
+
 import prismaClient from "@libs/server/client"
 import { withHandler, ResponseType } from "@libs/server/withHandler"
+
+const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN)
+const emailTransporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_ID,
+    pass: process.env.GMAIL_PASS,
+  },
+})
 
 const handler = async (
   req: NextApiRequest,
@@ -30,7 +42,24 @@ const handler = async (
     },
   })
 
-  console.log("token : ", token)
+  if (phone) {
+    const message = await twilioClient.messages.create({
+      messagingServiceSid: process.env.TWILIO_MESSAGE_SID,
+      to: process.env.TEST_PHONE_NUM!,
+      body: `Your login token is ${payload}`,
+    })
+    console.log("message : ", message)
+    console.log("token : ", token)
+  } else if (email) {
+    const emailMessage = await emailTransporter.sendMail({
+      from: "hyk@altava.com",
+      to: email,
+      subject: "Carrot Market Verification Email",
+      text: `Your token number is ${payload}`,
+      html: `<strong>Your token number is ${payload}</strong>`,
+    })
+    console.log("emailMessage : ", emailMessage)
+  }
 
   // if (email) {
   //   user = await prismaClient.user.findUnique({
